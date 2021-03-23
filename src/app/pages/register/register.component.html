@@ -1,0 +1,73 @@
+<div class="card bg-light">
+    <article class="card-body mx-auto" style="max-width: 400px;width: 100%;">
+        <h4 class="card-title mt-3 text-center">Create Account</h4>
+        <p class="text-center">Get started with your free account</p>
+        <p>
+            <a href="" class="btn btn-block btn-twitter"> <i class="fab fa-twitter"></i>   Login via Twitter</a>
+            <a href="" class="btn btn-block btn-facebook"> <i class="fab fa-facebook-f"></i>   Login via facebook</a>
+        </p>
+        <p class="divider-text">
+            <span class="bg-light">OR</span>
+        </p>
+        <div class="alert alert success" *ngIf="status == 'succes'">
+            El registro se ha completado,<a [routerLink]="['/login']">identificate aquí </a>
+        </div>
+        <div class="alert alert danger" *ngIf="status == 'error'">
+            Falla en el registro : {{msj}}!!
+        </div>
+        <!-- Para resetear el formulario le tengo que pasar el objeto del formulario actual-->
+        <form #registerForm="ngForm" (ngSubmit)="onSubmit(registerForm)">
+            <span *ngIf="!nombres.valid && nombres.touched" class="alert">
+                El nombre es obligatorio
+            </span>
+            <div class="form-group input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text"> <i class="fa fa-user"></i> </span>
+                </div>
+
+                <input name="nombres" class="form-control" placeholder="Nombres" type="text" #nombres="ngModel" [(ngModel)]="user.nombres" required>
+            </div>
+            <span *ngIf="!apellidos.valid && apellidos.touched" class="alert">
+                Los apellidos es obligatorio
+            </span>
+            <div class="form-group input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text"> <i class="fa fa-user"></i> </span>
+                </div>
+
+                <input name="apellidos" class="form-control" placeholder="Apellidos" type="text" #apellidos="ngModel" [(ngModel)]="user.apellidos" required>
+            </div>
+            <!-- form-group// -->
+            <span *ngIf="!email.valid && email.touched" class="alert">
+                El email es obligatorio
+            </span>
+            <div class="form-group input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
+                </div>
+                <input name="email" #email="ngModel" [(ngModel)]="user.email" class="form-control" placeholder="Email address" type="email" required>
+            </div>
+            <!-- form-group// -->
+
+            <!-- form-group// -->
+            <!-- form-group end.// -->
+            <span *ngIf="!password.valid && password.touched" class="alert">
+                La contraseña es obligatorio
+            </span>
+            <div class="form-group input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+                </div>
+                <input name="password" #password="ngModel" [(ngModel)]="user.password" class="form-control" placeholder="Create password" type="password" required>
+            </div>
+            <!-- form-group// -->
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary btn-block"> Create Account  </button>
+            </div>
+            <!-- form-group// -->
+            <p class="text-center">Have an account?
+                <a [routerLink]="['/login']" routerLinkActive="router-link-active">Log In</a>
+            </p>
+        </form>
+    </article>
+</div>

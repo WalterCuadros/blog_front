@@ -1,0 +1,54 @@
+<header id="header" class="header-transparent" style=" background-color: rgba(2,2,2,0.7)">
+    <div class="container">
+        <nav id="nav-menu-container">
+            <ul class="nav-menu">
+                <li class="menu-active"><a [routerLink]="['/']">Home</a></li>
+                <li><a [routerLink]="['/blog']">Blog</a></li>
+                <li><a [routerLink]="['/contact']">Contact</a></li>
+                <li><a [routerLink]="['/login']">Log in</a></li>
+            </ul>
+        </nav>
+        <!-- #nav-menu-container -->
+    </div>
+</header>
+<section *ngIf="!isPostSingle" style="background-color: gray;">
+    <div class="container">
+        <div class="row" style="margin-top: 25vh;height: 125vh;">
+            <div *ngFor="let post of posts" class="col-12 col-sm-8 col-md-6 col-lg-4">
+                <div class="card">
+                    <img class="card-img img-fluid" [src]="url_image+post.image" alt="Bologna" style="width:400px;height: 184px;">
+                    <div class="card-body">
+                        <h4 class="card-title">{{post.title}}</h4>
+
+                        <a class="btn btn-info" (click)="viewPostById(post.id)">Leer más</a>
+                    </div>
+                    <div class="card-footer text-muted d-flex justify-content-between bg-transparent border-top-0">
+                        <div class="views">{{post.autor}} {{post.date}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+<section *ngIf="isPostSingle" style="background-color: gray;    height: 125vh">
+    <div class="container">
+        <div class="row d-flex justify-content-center" style="margin-top: 20vh;">
+            <div class="card text-center" style="width: 75%;">
+                <div class="card-header">
+
+                </div>
+                <div class="card-body">
+                    <h4 class="card-title">{{titulo}}</h4>
+                    <img [src]="image_view" class="img-fluid" alt="Responsive image" style="width:300px">
+                    <p class="card-text">{{contenido}}</p>
+                    <a class="btn btn-primary" (click)="viewAll()">Regresar</a>
+                </div>
+                <div class="card-footer text-muted">
+                    Autor: {{autor}} Fecha: {{date_post}}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

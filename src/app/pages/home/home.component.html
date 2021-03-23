@@ -1,0 +1,21 @@
+<header id="header" class="header-transparent">
+    <div class="container">
+        <nav id="nav-menu-container">
+            <ul class="nav-menu">
+                <li class="menu-active"><a [routerLink]="['/']">Home</a></li>
+                <li><a [routerLink]="['/blog']">Blog</a></li>
+                <li><a [routerLink]="['/contact']">Contact</a></li>
+                <li><a [routerLink]="['/login']">Log in</a></li>
+            </ul>
+        </nav>
+        <!-- #nav-menu-container -->
+    </div>
+</header>
+<!-- End Header -->
+<section id="hero">
+    <div class="hero-container" data-aos="zoom-in" data-aos-delay="100">
+        <h1>BIENVENIDO AL BLOG DE LA PROGRAMACIÓN</h1>
+        <h2>Conoce más sobre las nuevas tecnologías que envuelven el mundo del desarrollo</h2>
+        <a [routerLink]="['login']" class="btn-get-started">Iniciar Sesión</a>
+    </div>
+</section>

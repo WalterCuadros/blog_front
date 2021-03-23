@@ -1,0 +1,34 @@
+<div class="wrapper fadeInDown setMargin">
+    <div id="formContent">
+        <!-- Tabs Titles -->
+
+        <!-- Icon -->
+        <div class="fadeIn first">
+            <img src="assets/img/avataaars.svg" id="icon" alt="User Icon" />
+        </div>
+        <div class="alert alert danger" *ngIf="status == 'error'">
+            Ups: {{mensaje}}!!
+        </div>
+        <!-- Login Form -->
+        <form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)">
+            <span *ngIf="!email.valid && email.touched" class="alert">
+                El email es obligatorio
+            </span>
+            <input name="email" #email="ngModel" [(ngModel)]="user.email" type="text" id="login" class="fadeIn second inp" placeholder="login" required>
+            <br><span *ngIf="!password.valid && password.touched" class="alert">
+                La contraseña es obligatoria
+            </span>
+            <input type="password" name="password" #password="ngModel" [(ngModel)]="user.password" id="password" class="fadeIn third inp" placeholder="password" required>
+
+            <input type="submit" class="fadeIn fourth" value="Log In" [disabled]="!loginForm.form.valid" />
+        </form>
+
+        <!-- Remind Passowrd -->
+        <div id="formFooter">
+            <a class="underlineHover" [routerLink]="['/register']">Crear cuenta</a>
+            <br><br>
+            <button class="btn btn-sm btn-success" [routerLink]="['/']"> Regresar</button>
+        </div>
+
+    </div>
+</div>
